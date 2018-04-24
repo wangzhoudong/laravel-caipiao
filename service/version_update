@@ -1,0 +1,32 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: coffeekizoku
+ * Date: 2018/1/4
+ * Time: 16:31
+ */
+
+// 获取.env文件
+$env = file_get_contents('./.env');
+// 转化为数组
+$env = explode(PHP_EOL, $env);
+// 循环,处理每个选项
+foreach ($env as &$item) {
+    if ($item && $item[0] !== '#' && strpos($item, 'APP_VERSION') !== false) {
+        $version = explode('=', $item);
+        $number = explode('.', $version[1]);
+
+        if (count($number) < 4) {
+            $version[1] .= '.' . date('YmdHis');
+        } else {
+            $number[3] = date('YmdHis');
+            $version[1] = implode('.', $number);
+        }
+
+        $item = implode('=', $version);
+    }
+}
+
+// 写回去
+$env = implode(PHP_EOL, $env);
+file_put_contents('./.env', $env);

@@ -28,8 +28,8 @@ class SsqModel extends BaseModel
      * 可以被集体附值的表的字段
      */
     protected $fillable = [
-        'issue_date',
         'issue',
+        'issue_date',
         'red1',
         'red2',
         'red3',
@@ -39,7 +39,9 @@ class SsqModel extends BaseModel
         'blue',
         'sales_amount',
         'first_prize',
-        'second_prize'
+        'second_prize',
+        'desc',
+        'md5'
     ];
 
     public function singleRand() {

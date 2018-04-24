@@ -10,7 +10,8 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "weidner/goutte": "^1.0"
+        "weidner/goutte": "^1.0",
+        "xethron/migrations-generator": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -25,7 +26,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/Helper/functions.inc.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
