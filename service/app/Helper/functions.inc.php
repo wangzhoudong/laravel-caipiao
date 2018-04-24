@@ -14,7 +14,7 @@
 
 if( ! function_exists('getSSQDesc'))
 {
-    function getSSQDesc($red1,$red2,$red3,$red4,$red5,$red6,$bule)
+    function getSSQDesc($red1,$red2,$red3,$red4,$red5,$red6,$blue)
     {
         $red1 =  str_pad($red1,2,"0",STR_PAD_LEFT);
         $red2 =  str_pad($red2,2,"0",STR_PAD_LEFT);
@@ -22,8 +22,8 @@ if( ! function_exists('getSSQDesc'))
         $red4 =  str_pad($red4,2,"0",STR_PAD_LEFT);
         $red5 =  str_pad($red5,2,"0",STR_PAD_LEFT);
         $red6 =  str_pad($red6,2,"0",STR_PAD_LEFT);
-        $bule =  str_pad($bule,2,"0",STR_PAD_LEFT);
-        return $red1 . " " . $red2 . " " . $red3 . " " . $red4 . " " . $red5 . " " . $red6 . " " . $bule;
+        $blue =  str_pad($blue,2,"0",STR_PAD_LEFT);
+        return $red1 . " " . $red2 . " " . $red3 . " " . $red4 . " " . $red5 . " " . $red6 . " " . $blue;
     }
 }
 /**

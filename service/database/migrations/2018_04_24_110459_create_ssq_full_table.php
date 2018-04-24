@@ -14,7 +14,7 @@ class CreateSsqFullTable extends Migration {
 	{
 		Schema::create('ssq_full', function(Blueprint $table)
 		{
-			$table->integer('id');
+			$table->integer('id', true);
 			$table->boolean('red1');
 			$table->boolean('red2');
 			$table->boolean('red3');
@@ -23,7 +23,7 @@ class CreateSsqFullTable extends Migration {
 			$table->boolean('red6');
 			$table->boolean('blue');
 			$table->char('desc', 64)->nullable();
-			$table->char('md5', 32);
+			$table->char('md5', 32)->unique('idx_md5');
 			$table->timestamps();
 		});
 	}

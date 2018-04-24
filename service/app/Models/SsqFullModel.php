@@ -22,13 +22,12 @@ class SsqFullModel extends BaseModel
     /**
      * 主键
      */
-    protected $primaryKey = "";
+    protected $primaryKey = "id";
 
     /**
      * 可以被集体附值的表的字段
      */
     protected $fillable = [
-        'id',
         'red1',
         'red2',
         'red3',

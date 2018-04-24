@@ -15,7 +15,7 @@ class CreateSsqTable extends Migration {
 		Schema::create('ssq', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('issue')->comment('开奖期号');
+			$table->integer('issue')->unique('idx_issue')->comment('开奖期号');
 			$table->date('issue_date')->comment('开奖日期');
 			$table->boolean('red1')->comment('红球');
 			$table->boolean('red2');
@@ -27,7 +27,7 @@ class CreateSsqTable extends Migration {
 			$table->bigInteger('sales_amount')->nullable();
 			$table->integer('first_prize')->nullable()->comment('一等奖');
 			$table->string('desc', 128)->nullable();
-			$table->char('md5', 32)->nullable();
+			$table->char('md5', 32)->nullable()->unique('idx_md5');
 			$table->integer('second_prize')->nullable()->comment('二等奖');
 			$table->timestamps();
 		});

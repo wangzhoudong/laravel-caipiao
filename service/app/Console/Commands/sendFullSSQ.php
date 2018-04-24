@@ -47,9 +47,12 @@ class sendFullSSQ extends Command
                     for ($red4=$red3+1;$red4<=31;$red4++) {
                         for ($red5=$red4+1;$red5<=32;$red5++) {
                             for ($red6=$red5+1;$red6<=33;$red6++) {
-                                for ($bule=1;$bule<=16;$bule++) {
+                                for ($blue=1;$blue<=16;$blue++) {
                                     $startRow = $startRow + 1;
-                                    $desc =  getSSQDesc($red1,$red2,$red3,$red3,$red4,$red5,$red6,$bule) . "\r\n";
+                                    echo $startRow . "\r\n";
+
+
+                                    $desc =  getSSQDesc($red1,$red2,$red3,$red4,$red5,$red6,$blue) . "\r\n";
                                     SsqFullModel::create([
                                             'red1'=>$red1,
                                             'red2'=>$red2,
@@ -57,7 +60,7 @@ class sendFullSSQ extends Command
                                             'red4'=>$red4,
                                             'red5'=>$red5,
                                             'red6'=>$red6,
-                                            'blue'=>$bule,
+                                            'blue'=>$blue,
                                             'desc'=> $desc,
                                             'md5'=> getSSQDescMd5($desc)
                                         ]);
