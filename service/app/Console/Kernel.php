@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             dealSsqData::update();
-        }) ->dailyAt("23:00"));//每天23:00运行任务
+        }) ->dailyAt("23:00");//每天23:00运行任务
 
     }
 
