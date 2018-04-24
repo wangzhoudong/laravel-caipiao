@@ -2,8 +2,13 @@ language: php
 php:
   - 7.1
 
+services:
+  - docker
+
 before_script:
   - ls
   - cd ./service && composer self-update
-#  - cd service && composer install --prefer-source --no-interaction
+  - cd ./service && composer install --prefer-source --no-interaction
 
+script:
+  - ./service/vendor/bin/phpunit
