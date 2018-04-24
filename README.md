@@ -4,7 +4,7 @@
 [![Build Status](https://www.travis-ci.org/wangzhoudong/laravel-caipiao.svg?branch=master)](https://www.travis-ci.org/wangzhoudong/laravel-caipiao)
 
 
-测试版
+测试版1
 用到的扩展Goutte
 
 dom_crawler

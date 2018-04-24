@@ -5,10 +5,20 @@ php:
 services:
   - docker
 
+env:
+    global:
+        - COMMIT=${TRAVIS_COMMIT::8}
+        - REPO=dongen/laravel-caipiao
+
 before_script:
   - ls
   - cd ./service && composer self-update && cd ../
   - cd ./service && composer install  && cd ../
 
 script:
-  - ./service/vendor/bin/phpunit
+  - docker --version
+  - export TAG="latest"
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - docker build -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker push $REPO
