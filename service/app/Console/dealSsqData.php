@@ -35,7 +35,6 @@ class dealSsqData
                 $data['sales_amount'] = (int)trim(str_replace(',','',$node->filter('td')->eq(3)->filter('strong')->text()));
                 $data['first_prize'] = (int)$node->filter('td ')->eq(4)->filter('strong')->text();
                 $data['second_prize'] = (int)$node->filter('td ')->eq(5)->filter('strong')->text();
-                dd($data);
                 $ok = SsqModel::updateOrCreate(['issue'=>$data['issue']],$data);
                 if(!$ok) {
                     echo "创建失败" . $data['issue'] . "\r\n";
