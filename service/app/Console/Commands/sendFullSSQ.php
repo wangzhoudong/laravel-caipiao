@@ -39,8 +39,9 @@ class sendFullSSQ extends Command
     public function handle()
     {
         //
-        echo "ddd\r\n";
+
         $startRow = 0;
+        $insert = [];
         for ($red1=1;$red1<=28;$red1++) {
             for ($red2=$red1+1;$red2<=29;$red2++) {
                 for ($red3=$red2+1;$red3<=30;$red3++) {
@@ -49,21 +50,26 @@ class sendFullSSQ extends Command
                             for ($red6=$red5+1;$red6<=33;$red6++) {
                                 for ($blue=1;$blue<=16;$blue++) {
                                     $startRow = $startRow + 1;
-                                    echo $startRow . "\r\n";
 
 
                                     $desc =  getSSQDesc($red1,$red2,$red3,$red4,$red5,$red6,$blue) . "\r\n";
-                                    SsqFullModel::create([
-                                            'red1'=>$red1,
-                                            'red2'=>$red2,
-                                            'red3'=>$red3,
-                                            'red4'=>$red4,
-                                            'red5'=>$red5,
-                                            'red6'=>$red6,
-                                            'blue'=>$blue,
-                                            'desc'=> $desc,
-                                            'md5'=> getSSQDescMd5($desc)
-                                        ]);
+                                    $insert[] = [
+                                        'red1'=>$red1,
+                                        'red2'=>$red2,
+                                        'red3'=>$red3,
+                                        'red4'=>$red4,
+                                        'red5'=>$red5,
+                                        'red6'=>$red6,
+                                        'blue'=>$blue,
+                                        'desc'=> $desc,
+                                        'md5'=> getSSQDescMd5($desc)
+                                    ];
+                                    if($startRow%2000 == 0 ) {
+                                        SsqFullModel::insert($insert);
+                                        $insert = [];
+                                        echo "插入$startRow 条记录\r\n";
+                                    }
+
                                 }
 
                             }
@@ -72,6 +78,9 @@ class sendFullSSQ extends Command
                 }
             }
         }
+        SsqFullModel::insert($insert);
+        echo "插入$startRow 条记录";
+
 //        SsqFullModel::create([]);
     }
 }
